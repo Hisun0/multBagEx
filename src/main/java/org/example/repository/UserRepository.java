@@ -11,5 +11,6 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     @Profiling
+    @EntityGraph(attributePaths = {"mobileNumbers", "emailAddresses"})
     List<User> findByFullNameContaining(String name);
 }
